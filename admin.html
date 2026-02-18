@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>Admin Panel</h1>
+</header>
+
+<nav>
+<a href="index.html">Back to Home</a>
+</nav>
+
+<section class="products">
+<h2>Add New Product</h2>
+
+<input type="text" id="name" placeholder="Product Name"><br><br>
+<input type="number" id="price" placeholder="Price"><br><br>
+<input type="text" id="image" placeholder="Image URL"><br><br>
+
+<button onclick="addProduct()">Add Product</button>
+</section>
+
+<script>
+function addProduct() {
+    let name = document.getElementById("name").value;
+    let price = document.getElementById("price").value;
+    let image = document.getElementById("image").value;
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+
+    products.push({name, price, image});
+
+    localStorage.setItem("products", JSON.stringify(products));
+
+    alert("Product Added Successfully!");
+}
+</script>
+
+</body>
+</html>
